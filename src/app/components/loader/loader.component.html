@@ -1,0 +1,22 @@
+<div class="app-loader">
+  <div class="dsc-carousel">
+    <div class="dsc-carousel__buttons" *ngIf="showButtons">
+      <ion-icon name="arrow-back-circle-outline" (click)="setBackPosition()"></ion-icon>
+      <ion-icon name="arrow-forward-circle-outline" (click)="setNextPosition()"></ion-icon>
+    </div>
+    <div class="dsc-carousel__content">
+      <ng-container *ngFor="let item of items">
+        <div class="dsc-carousel__content-item"
+          [ngStyle]="{'background-image': 'url(' + item.image + ')', 'margin-left': item.marginLeft + '%'}">
+          <h1>{{item.title}}</h1>
+          <p>{{item.description}}</p>
+        </div>
+      </ng-container>
+    </div>
+    <div class="dsc-carousel__steps" *ngIf="showSteps">
+      <div class="dsc-carousel__steps-step dsc-carousel__steps-step-{{currentPosition === item.id ? 'active': ''}}"
+        *ngFor="let item of items" (click)="setCurrentPosition(item.id)">
+      </div>
+    </div>
+  </div>
+</div>

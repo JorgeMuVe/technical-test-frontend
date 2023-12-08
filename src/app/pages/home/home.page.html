@@ -1,0 +1,30 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Usuarios registrados</ion-title>
+  </ion-toolbar>
+  <app-loader *ngIf="showLoader" [timeChange]="timeLoader" [typeConfig]="typeLoader" [showButtons]="buttonsLoader"
+    [showSteps]="stepsLoader">
+  </app-loader>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list *ngFor="let user of users">
+    <ion-item>
+      <ion-avatar slot="start">
+        <ion-img [src]="user.image"></ion-img>
+      </ion-avatar>
+      <ion-label>{{user.name}}</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col hidden>
+        <ion-button fill="outline">Volver</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button fill="solid" (click)="handleShowLoader()">Show Loader</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
